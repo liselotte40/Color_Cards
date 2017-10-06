@@ -1,0 +1,72 @@
+$base-color:#b1de64;
+$base-size:300px;
+$text-color:#ffffff;
+
+body{
+  @extend %flex-center;
+  height: 100vh;
+  font-size: 26px;
+}
+
+@mixin scale ($wert){
+  width: $base-size *$wert;
+  height: $base-size *$wert;
+}
+%color-card{
+  @extend %flex-center;
+  flex-direction: column;
+  background: $base-color;
+  width: $base-size;
+  height: $base-size;
+
+}
+
+%flex-center{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.base,.light,.lighter,.dark,.darker{
+  @extend %color-card;
+}
+
+.base{
+  &:after{
+    content: "("+$base-color+")";
+  }
+}
+
+.light{
+  @include scale(.9);
+  background: lighten($base-color,10%);
+  &:after{
+    content: "("+lighten($base-color,10%)+")";
+  }
+}
+
+.lighter{
+  @include scale(.8);
+  background: lighten($base-color,20%);
+  &:after{
+    content: "("+lighten($base-color,20%)+")";
+  }
+
+}
+
+.dark{
+  @include scale(.9);
+  background: darken($base-color,10%);
+  &:after{
+    content: "("+darken($base-color,10%)+")";
+  }
+
+}
+.darker{
+    @include scale(.8);
+  background: darken($base-color,20%);
+  &:after{
+    content: "("+darken($base-color,20%)+")";
+    }
+
+}
